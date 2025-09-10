@@ -57,6 +57,14 @@ h1, h2, h3 {
 .stProgress>div>div>div>div {
     background-color: #FFD700;
 }
+
+/* Agrandir et espacer tous les radios */
+div[data-testid="stRadio"] label {
+    font-size: 20px !important;      /* Taille du texte */
+    padding: 10px 25px !important;   /* Espace autour du texte */
+    margin-right: 15px !important;   /* Espacement horizontal entre options */
+    display: inline-block;            /* Assure l'espacement horizontal si horizontal=True */
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -81,10 +89,11 @@ st.write("2 = Applied inconsistently / moderate level")
 st.write("3 = Applied consistently / strong impact")
 
 # tactical_fluidity = st.slider("Tactical Fluidity", 0, 3, 0)
-tactical_fluidity = st.segmented_control(
+tactical_fluidity = st.radio(
     "Tactical Fluidity",
     options=[0, 1, 2, 3],
-    default=0
+    index=0,
+    horizontal=True
 )
 progressive_possession = st.slider("Progressive Possession", 0, 3, 0)
 off_ball_runs = st.slider("Off-Ball Runs", 0, 3, 0)
@@ -131,6 +140,7 @@ if st.button("Submit evaluation"):
     ]
     sheet.insert_row(data, 2)
     st.success("✅ Evaluation successfully submitted!")
+
 
 
 
