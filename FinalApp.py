@@ -110,17 +110,15 @@ div[data-testid="stRadio"] input:checked + span {
 """, unsafe_allow_html=True)
 
 # --- TITRE DE LA PAGE ---  
-st.title("Observation tool RSCA")
-st.write("Welcome to the RSCA Academy Match Evaluation App!")
+st.title("METHODOLOGY GAME OBSERVATION")
+st.write("Welcome to the RSCA Academy Game Evaluation tool!")
 
 # --- PRE MATCH INFORMATION ---
 st.header("1. Pre-match information")
 observer_name = st.text_input("Observer name")
-category = st.selectbox("Category", ["U8", "U9", "U10", "U11", "U12", "U13", "U14", "U15", "U16", "U18"])
+category = st.selectbox("Category", ["U23", "U18", "U16", "U15", "U14", "U13", "U12", "U11", "U10"])
 opponent = st.text_input("Opponent")
 match_date = st.date_input("Date", value=date.today())
-
-competition_type = st.text_input("Competition / Training type")
 
 # --- END-OF-MATCH EVALUATION ---
 st.header("2. End-of-match evaluation")
@@ -239,7 +237,7 @@ general_comments = st.text_area("General Comments")
 # --- SUBMIT BUTTON ---
 if st.button("Submit evaluation"):
     data = [
-        observer_name, category, opponent, str(match_date), competition_type,
+        observer_name, category, opponent, str(match_date),
         tactical_fluidity, progressive_possession, off_ball_runs, counterpress,
         fast_transitions, intensity, high_pressing, offensive_marking,
         round(average_players_20,1),
@@ -247,6 +245,7 @@ if st.button("Submit evaluation"):
     ]
     sheet.insert_row(data, 2)
     st.success("✅ Evaluation successfully submitted!")
+
 
 
 
