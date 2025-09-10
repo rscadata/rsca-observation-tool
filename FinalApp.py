@@ -102,10 +102,10 @@ div[data-testid="stRadio"] input:checked + span {
     border-radius: 8px;
 }
 
-/* Chiffres sous les radios en doré */
-div[data-testid="stRadio"] span {
+/* Chiffres 0-1-2-3 sous les radios en doré */
+div[data-testid="stRadio"] input[type="radio"] + span::after {
     color: #FFD700 !important;
-    font-weight: bold;   /* optionnel pour mieux voir */
+    font-weight: bold;
 }
 
 /* Slider / radio texte labels (optionnel selon ton Streamlit) */
@@ -253,6 +253,7 @@ if st.button("Submit evaluation"):
     ]
     sheet.insert_row(data, 2)
     st.success("✅ Evaluation successfully submitted!")
+
 
 
 
