@@ -18,75 +18,7 @@ sheet = client.open_by_url(
 ).sheet1
 
 # --- PARAMÉTRAGE DE L'AFFICHAGE (CSS) ---
-st.markdown("""
-<style>
-/* Fond global blanc doux */
-.stApp {
-    background-color: #F5F5F5;  /* blanc légèrement cassé */
-    color: #4B0082;              /* Texte par défaut en violet */
-}
-/* Titres principaux et sous-titres */
-h1, h2, h3 {
-    color: #4B0082;
-}
-/* Boutons */
-.stButton>button {
-    background-color: #F0F0F0;
-    color: #4B0082;
-    font-weight: bold;
-}
-/* Champs texte et text area */
-.stTextInput>div>div>input,
-.stTextArea>div>div>textarea {
-    border: 1px solid #F0F0F0;
-    background-color: #F0F0F0;
-    color: #4B0082;             /* Texte saisi en violet */
-    caret-color: #4B0082;
-}
-/* Placeholder texte violet */
-.stTextInput>div>div>input::placeholder,
-.stTextArea>div>div>textarea::placeholder {
-    color: #4B0082;
-    opacity: 0.7;
-}
-/* Selectbox / dropdown */
-.stSelectbox>div>div>div>select {
-    background-color: #F0F0F0;
-    color: #4B0082;
-    border: 1px solid #F0F0F0;
-}
-/* Slider / radio texte labels */
-.css-1d391kg label, .css-1aumxhk {
-    color: #4B0082;
-}
-/* Progress bars (doré) */
-.stProgress>div>div>div>div {
-    background-color: #FFD700;
-}
-/* Agrandir et espacer tous les radios */
-div[data-testid="stRadio"] label {
-    font-size: 20px !important;
-    padding: 10px 25px !important;
-    margin-right: 15px !important;
-    display: inline-block;
-    cursor: pointer;
-    transition: background 0.2s;
-    background-color: white;
-    color: #4B0082 !important;
-    border-radius: 8px;
-}
-/* Hover léger pour radios */
-div[data-testid="stRadio"] label:hover {
-    background-color: rgba(75, 0, 130, 0.1);
-}
-/* Radio sélectionnée dorée */
-div[data-testid="stRadio"] input:checked + span {
-    background-color: #FFD700 !important;
-    color: #4B0082 !important;
-    border-radius: 8px;
-}
-</style>
-""", unsafe_allow_html=True)
+st.markdown(""" <style> /* Fond global blanc */ .stApp { background-color: #F5F5F5; /* blanc légèrement cassé */ color: #4B0082; /* Texte en violet */ } /* Titres principaux et sous-titres */ h1, h2, h3 { color: #4B0082; } /* Boutons */ .stButton>button { background-color: #F0F0F0; color: #4B0082; font-weight: bold; } /* Champs texte et text area */ .stTextInput>div>div>input, .stTextArea>div>div>textarea { border: 1px solid #F0F0F0; background-color: #F0F0F0; color: #4B0082; caret-color: #4B0082; } /* Selectbox / dropdown */ .stSelectbox>div>div>div>select { background-color: #F0F0F0; color: #4B0082; border: 1px solid #F0F0F0; } /* Slider / radio texte labels */ .css-1d391kg label, .css-1aumxhk { color: #4B0082; } /* Progress bars (doré) */ .stProgress>div>div>div>div { background-color: #FFD700; } /* Agrandir et espacer tous les radios */ div[data-testid="stRadio"] label { font-size: 20px !important; /* Taille du texte */ padding: 10px 25px !important; /* Espace autour du texte */ margin-right: 15px !important; /* Espacement horizontal entre options */ display: inline-block; /* Assure l'espacement horizontal si horizontal=True */ color: #4B0082 !important; /* Texte en violet */ } </style> """, unsafe_allow_html=True)
 
 # --- TITRE DE LA PAGE ---  
 st.title("Observation tool RSCA")
@@ -226,6 +158,7 @@ if st.button("Submit evaluation"):
     ]
     sheet.insert_row(data, 2)
     st.success("✅ Evaluation successfully submitted!")
+
 
 
 
