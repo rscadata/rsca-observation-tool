@@ -20,14 +20,14 @@ sheet = client.open_by_url(
 # --- PARAMÉTRAGE DE L'AFFICHAGE (CSS) ---
 st.markdown("""
 <style>
-/* Fond global violet Anderlecht */
+/* Fond global blanc */
 .stApp {
-    background-color: #4B0082;
-    color: white;
+    background-color: white;
+    color: #4B0082;  /* Texte en violet */
 }
 /* Titres principaux et sous-titres */
 h1, h2, h3 {
-    color: white;
+    color: #4B0082;
 }
 /* Boutons */
 .stButton>button {
@@ -40,20 +40,20 @@ h1, h2, h3 {
 .stTextArea>div>div>textarea {
     border: 1px solid #F0F0F0;
     background-color: #F0F0F0;
-    color: black;
+    color: #4B0082;
     caret-color: #4B0082;
 }
 /* Selectbox / dropdown */
 .stSelectbox>div>div>div>select {
     background-color: #F0F0F0;
-    color: black;
+    color: #4B0082;
     border: 1px solid #F0F0F0;
 }
-/* Slider texte labels */
+/* Slider / radio texte labels */
 .css-1d391kg label, .css-1aumxhk {
-    color: white;
+    color: #4B0082;
 }
-/* Progress bars */
+/* Progress bars (doré) */
 .stProgress>div>div>div>div {
     background-color: #FFD700;
 }
@@ -64,6 +64,7 @@ div[data-testid="stRadio"] label {
     padding: 10px 25px !important;   /* Espace autour du texte */
     margin-right: 15px !important;   /* Espacement horizontal entre options */
     display: inline-block;            /* Assure l'espacement horizontal si horizontal=True */
+    color: #4B0082 !important;        /* Texte en violet */
 }
 </style>
 """, unsafe_allow_html=True)
@@ -206,6 +207,7 @@ if st.button("Submit evaluation"):
     ]
     sheet.insert_row(data, 2)
     st.success("✅ Evaluation successfully submitted!")
+
 
 
 
