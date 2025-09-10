@@ -20,10 +20,10 @@ sheet = client.open_by_url(
 # --- PARAMÉTRAGE DE L'AFFICHAGE (CSS) ---
 st.markdown("""
 <style>
-/* Fond global blanc */
+/* Fond global blanc doux */
 .stApp {
-    background-color: white;
-    color: #4B0082;  /* Texte en violet */
+    background-color: #F5F5F5;  /* blanc légèrement cassé */
+    color: #4B0082;              /* Texte en violet */
 }
 /* Titres principaux et sous-titres */
 h1, h2, h3 {
@@ -207,6 +207,7 @@ if st.button("Submit evaluation"):
     ]
     sheet.insert_row(data, 2)
     st.success("✅ Evaluation successfully submitted!")
+
 
 
 
