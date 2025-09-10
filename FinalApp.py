@@ -200,7 +200,7 @@ player_scores = [
 average_players = sum(player_scores) / len(player_scores)
 average_players_20 = (average_players / 3) * 20
 st.subheader("Team evaluation average")
-st.write(f"Average score: {average_players_20:.1f}/20")
+st.write(f"Average score {average_players_20:.1f}/20")
 st.progress(int((average_players_20/20)*100))
 
 # --- COACH EVALUATION ---
@@ -226,7 +226,7 @@ coach_scores = [coach_attitude, coach_impact]
 average_coach = sum(coach_scores) / len(coach_scores)
 average_coach_20 = (average_coach / 3) * 20
 st.subheader("Coach evaluation average")
-st.write(f"Average score: {average_coach_20:.1f}/20")
+st.write(f"Average score {average_coach_20:.1f}/20")
 st.progress(int((average_coach_20/20)*100))
 
 # --- GENERAL COMMENTS ---
@@ -244,6 +244,7 @@ if st.button("Submit evaluation"):
     ]
     sheet.insert_row(data, 2)
     st.success("✅ Evaluation successfully submitted!")
+
 
 
 
