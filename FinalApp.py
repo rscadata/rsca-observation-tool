@@ -89,19 +89,71 @@ st.write("2 = Applied inconsistently / moderate level")
 st.write("3 = Applied consistently / strong impact")
 
 # tactical_fluidity = st.slider("Tactical Fluidity", 0, 3, 0)
+# tactical_fluidity = st.radio("Tactical Fluidity", options=[0, 1, 2, 3], index=0, horizontal=True)
+# progressive_possession = st.slider("Progressive Possession", 0, 3, 0)
+# off_ball_runs = st.slider("Off-Ball Runs", 0, 3, 0)
+# counterpress = st.slider("Counterpress", 0, 3, 0)
+# fast_transitions = st.slider("Fast Transitions", 0, 3, 0)
+# intensity = st.slider("Intensity", 0, 3, 0)
+# high_pressing = st.slider("High Pressing", 0, 3, 0)
+# offensive_marking = st.slider("Offensive Marking", 0, 3, 0)
+
 tactical_fluidity = st.radio(
     "Tactical Fluidity",
     options=[0, 1, 2, 3],
     index=0,
     horizontal=True
 )
-progressive_possession = st.slider("Progressive Possession", 0, 3, 0)
-off_ball_runs = st.slider("Off-Ball Runs", 0, 3, 0)
-counterpress = st.slider("Counterpress", 0, 3, 0)
-fast_transitions = st.slider("Fast Transitions", 0, 3, 0)
-intensity = st.slider("Intensity", 0, 3, 0)
-high_pressing = st.slider("High Pressing", 0, 3, 0)
-offensive_marking = st.slider("Offensive Marking", 0, 3, 0)
+
+progressive_possession = st.radio(
+    "Progressive Possession",
+    options=[0, 1, 2, 3],
+    index=0,
+    horizontal=True
+)
+
+off_ball_runs = st.radio(
+    "Off-Ball Runs",
+    options=[0, 1, 2, 3],
+    index=0,
+    horizontal=True
+)
+
+counterpress = st.radio(
+    "Counterpress",
+    options=[0, 1, 2, 3],
+    index=0,
+    horizontal=True
+)
+
+fast_transitions = st.radio(
+    "Fast Transitions",
+    options=[0, 1, 2, 3],
+    index=0,
+    horizontal=True
+)
+
+intensity = st.radio(
+    "Intensity",
+    options=[0, 1, 2, 3],
+    index=0,
+    horizontal=True
+)
+
+high_pressing = st.radio(
+    "High Pressing",
+    options=[0, 1, 2, 3],
+    index=0,
+    horizontal=True
+)
+
+offensive_marking = st.radio(
+    "Offensive Marking",
+    options=[0, 1, 2, 3],
+    index=0,
+    horizontal=True
+)
+
 
 player_scores = [
     tactical_fluidity, progressive_possession, off_ball_runs,
@@ -115,8 +167,22 @@ st.progress(int((average_players_20/20)*100))
 
 # --- COACH EVALUATION ---
 st.header("3. Coach evaluation")
-coach_attitude = st.slider("Coach Attitude", 0, 3, 0)
-coach_impact = st.slider("Coach Impact On The Match", 0, 3, 0)
+#coach_attitude = st.slider("Coach Attitude", 0, 3, 0)
+#coach_impact = st.slider("Coach Impact On The Match", 0, 3, 0)
+
+coach_attitude = st.radio(
+    "Coach Attitude",
+    options=[0, 1, 2, 3],
+    index=0,
+    horizontal=True
+)
+
+coach_impact = st.radio(
+    "Coach Impact On The Match",
+    options=[0, 1, 2, 3],
+    index=0,
+    horizontal=True
+)
 
 coach_scores = [coach_attitude, coach_impact]
 average_coach = sum(coach_scores) / len(coach_scores)
@@ -140,6 +206,7 @@ if st.button("Submit evaluation"):
     ]
     sheet.insert_row(data, 2)
     st.success("✅ Evaluation successfully submitted!")
+
 
 
 
