@@ -49,34 +49,22 @@ h1, h2, h3 {
     color: #4B0082;
     border: 1px solid #F0F0F0;
 }
+/* Slider / radio texte labels */
+.css-1d391kg label, .css-1aumxhk {
+    color: #4B0082;
+}
 /* Progress bars (doré) */
 .stProgress>div>div>div>div {
     background-color: #FFD700;
 }
 
-/* Agrandir, espacer tous les radios */
+/* Agrandir et espacer tous les radios */
 div[data-testid="stRadio"] label {
-    font-size: 20px !important;        /* Taille du texte */
-    padding: 10px 25px !important;     /* Espace autour du texte */
-    margin-right: 15px !important;     /* Espacement horizontal */
-    display: inline-block;              /* Assure l'espacement horizontal si horizontal=True */
-    cursor: pointer;                    /* Curseur main au hover */
-    transition: background 0.2s;        /* Petite transition au hover */
-    background-color: white;            /* Fond par défaut */
-    color: #4B0082 !important;         /* Texte en violet */
-    border-radius: 8px;                 /* Coins arrondis */
-}
-
-/* Hover léger pour radios */
-div[data-testid="stRadio"] label:hover {
-    background-color: rgba(75, 0, 130, 0.1);
-}
-
-/* Option radio sélectionnée : fond doré, texte violet */
-div[data-testid="stRadio"] input:checked + span {
-    background-color: #FFD700 !important;
-    color: #4B0082 !important;
-    border-radius: 8px;
+    font-size: 20px !important;      /* Taille du texte */
+    padding: 10px 25px !important;   /* Espace autour du texte */
+    margin-right: 15px !important;   /* Espacement horizontal entre options */
+    display: inline-block;            /* Assure l'espacement horizontal si horizontal=True */
+    color: #4B0082 !important;        /* Texte en violet */
 }
 </style>
 """, unsafe_allow_html=True)
@@ -219,6 +207,7 @@ if st.button("Submit evaluation"):
     ]
     sheet.insert_row(data, 2)
     st.success("✅ Evaluation successfully submitted!")
+
 
 
 
