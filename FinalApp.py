@@ -87,12 +87,12 @@ div[data-testid="stRadio"] label {
     border-radius: 8px;
     cursor: pointer;
     transition: background 0.2s;
-    background-color: rgba(75, 0, 130, 0.05);     /* Violet très léger */
+    background-color: rgba(75, 0, 130, 0.12);     /* Violet légèrement plus foncé */
 }
 
 /* Hover léger pour radios */
 div[data-testid="stRadio"] label:hover {
-    background-color: rgba(75, 0, 130, 0.1);
+    background-color: rgba(75, 0, 130, 0.18);
 }
 
 /* Fond doré pour option radio sélectionnée */
@@ -247,6 +247,7 @@ if st.button("Submit evaluation"):
     ]
     sheet.insert_row(data, 2)
     st.success("✅ Evaluation successfully submitted!")
+
 
 
 
