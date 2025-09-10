@@ -54,29 +54,28 @@ h1, h2, h3 {
     background-color: #FFD700;
 }
 
-/* Agrandir, espacer et encadrer tous les radios */
+/* Agrandir, espacer tous les radios */
 div[data-testid="stRadio"] label {
     font-size: 20px !important;        /* Taille du texte */
     padding: 10px 25px !important;     /* Espace autour du texte */
     margin-right: 15px !important;     /* Espacement horizontal */
     display: inline-block;              /* Assure l'espacement horizontal si horizontal=True */
-    color: #4B0082 !important;         /* Texte en violet */
-    border: 2px solid #4B0082;         /* Encadrement violet */
-    border-radius: 8px;                 /* Coins arrondis */
     cursor: pointer;                    /* Curseur main au hover */
     transition: background 0.2s;        /* Petite transition au hover */
     background-color: white;            /* Fond par défaut */
+    color: #4B0082 !important;         /* Texte en violet */
+    border-radius: 8px;                 /* Coins arrondis */
 }
 
-/* Effet hover pour radios */
+/* Hover léger pour radios */
 div[data-testid="stRadio"] label:hover {
-    background-color: rgba(75, 0, 130, 0.1);  /* léger fond violet au survol */
+    background-color: rgba(75, 0, 130, 0.1);
 }
 
-/* Fond doré pour option radio sélectionnée */
+/* Option radio sélectionnée : fond doré, texte violet */
 div[data-testid="stRadio"] input:checked + span {
     background-color: #FFD700 !important;
-    color: #4B0082 !important;  /* texte toujours violet */
+    color: #4B0082 !important;
     border-radius: 8px;
 }
 </style>
@@ -220,6 +219,7 @@ if st.button("Submit evaluation"):
     ]
     sheet.insert_row(data, 2)
     st.success("✅ Evaluation successfully submitted!")
+
 
 
 
