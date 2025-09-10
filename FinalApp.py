@@ -39,11 +39,12 @@ h1, h2, h3 {
     font-weight: bold;
 }
 
-/* --- Inputs / TextAreas / Selectboxes --- */
+/* --- Inputs / TextAreas / Selectboxes / DateInput --- */
 .stTextInput input,
 .stTextArea textarea,
-.stSelectbox select {
-    color: #4B0082 !important;     /* Texte saisi violet */
+.stSelectbox select,
+.stDateInput input {
+    color: #4B0082 !important;     /* Texte violet */
     background-color: #F0F0F0;
     border: 1px solid #F0F0F0;
     caret-color: #4B0082;
@@ -59,7 +60,8 @@ h1, h2, h3 {
 /* Labels (Observer name, Opponent, Category...) */
 .stTextInput label,
 .stTextArea label,
-.stSelectbox label {
+.stSelectbox label,
+.stDateInput label {
     color: #4B0082 !important;
 }
 
@@ -77,26 +79,26 @@ div[data-testid="stVerticalBlock"] > div > div > div[data-testid="stRadio"] {
     border: none !important;
 }
 
-/* Labels des radios */
-div[data-testid="stRadio"] label {
-    font-size: 20px !important;                   /* Taille du texte */
-    padding: 10px 25px !important;                /* Espace autour du texte */
-    margin-right: 15px !important;                /* Espacement horizontal */
+/* Labels des options radios (exclut le titre) */
+div[data-testid="stRadio"] div[data-testid="stMarkdownContainer"] + div label {
+    font-size: 20px !important;
+    padding: 10px 25px !important;
+    margin-right: 15px !important;
     display: inline-block;
-    color: #4B0082 !important;                    /* Texte violet */
+    color: #4B0082 !important;
     border-radius: 8px;
     cursor: pointer;
     transition: background 0.2s;
-    background-color: rgba(75, 0, 130, 0.12);     /* Violet légèrement plus foncé */
+    background-color: rgba(75, 0, 130, 0.12); /* violet légèrement plus foncé */
 }
 
-/* Hover léger pour radios */
-div[data-testid="stRadio"] label:hover {
+/* Hover léger pour options radios */
+div[data-testid="stRadio"] div[data-testid="stMarkdownContainer"] + div label:hover {
     background-color: rgba(75, 0, 130, 0.18);
 }
 
 /* Fond doré pour option radio sélectionnée */
-div[data-testid="stRadio"] input:checked + span {
+div[data-testid="stRadio"] div[data-testid="stMarkdownContainer"] + div input:checked + span {
     background-color: #FFD700 !important;
     color: #4B0082 !important;
     border-radius: 8px;
@@ -245,6 +247,7 @@ if st.button("Submit evaluation"):
     ]
     sheet.insert_row(data, 2)
     st.success("✅ Evaluation successfully submitted!")
+
 
 
 
