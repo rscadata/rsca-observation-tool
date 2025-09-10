@@ -81,7 +81,12 @@ st.write("2 = Applied inconsistently / moderate level")
 st.write("3 = Applied consistently / strong impact")
 
 # tactical_fluidity = st.slider("Tactical Fluidity", 0, 3, 0)
-tactical_fluidity = st.select_slider("Tactical Fluidity", options=[0, 1, 2, 3], value=0)
+tactical_fluidity = st.radio(
+    "Tactical Fluidity",
+    options=[0, 1, 2, 3],
+    index=0,
+    horizontal=True
+)
 progressive_possession = st.slider("Progressive Possession", 0, 3, 0)
 off_ball_runs = st.slider("Off-Ball Runs", 0, 3, 0)
 counterpress = st.slider("Counterpress", 0, 3, 0)
@@ -127,6 +132,7 @@ if st.button("Submit evaluation"):
     ]
     sheet.insert_row(data, 2)
     st.success("✅ Evaluation successfully submitted!")
+
 
 
 
