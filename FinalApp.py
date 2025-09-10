@@ -70,13 +70,6 @@ h1, h2, h3 {
 
 /* --- RADIOS --- */
 
-/* Supprimer tout fond autour des radios */
-div[data-testid="stRadio"] {
-    background-color: transparent !important;
-    padding: 0 !important;
-    border: none !important;
-}
-
 /* Supprimer le fond et padding des containers parents */
 div[data-testid="stVerticalBlock"] > div > div > div[data-testid="stRadio"] {
     background-color: transparent !important;
@@ -92,9 +85,9 @@ div[data-testid="stRadio"] label {
     display: inline-block;
     color: #4B0082 !important;            /* Texte violet */
     border-radius: 8px;
-    background-color: white;              /* Option non sélectionnée */
     cursor: pointer;
     transition: background 0.2s;
+    background-color: inherit;            /* Hérite du fond global -> plus de bloc blanc */
 }
 
 /* Hover léger pour radios */
@@ -254,6 +247,7 @@ if st.button("Submit evaluation"):
     ]
     sheet.insert_row(data, 2)
     st.success("✅ Evaluation successfully submitted!")
+
 
 
 
