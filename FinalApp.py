@@ -19,7 +19,6 @@ sheet = client.open_by_url(
 
 # --- PARAMÉTRAGE DE L'AFFICHAGE (CSS) ---
 
-st.markdown("""
 <style>
 /* --- Fond global et texte général --- */
 .stApp {
@@ -79,15 +78,15 @@ div[data-testid="stVerticalBlock"] > div > div > div[data-testid="stRadio"] {
 
 /* Labels des radios */
 div[data-testid="stRadio"] label {
-    font-size: 20px !important;           /* Taille du texte */
-    padding: 10px 25px !important;        /* Espace autour du texte */
-    margin-right: 15px !important;        /* Espacement horizontal */
+    font-size: 20px !important;                   /* Taille du texte */
+    padding: 10px 25px !important;                /* Espace autour du texte */
+    margin-right: 15px !important;                /* Espacement horizontal */
     display: inline-block;
-    color: #4B0082 !important;            /* Texte violet */
+    color: #4B0082 !important;                    /* Texte violet */
     border-radius: 8px;
     cursor: pointer;
     transition: background 0.2s;
-    background-color: inherit;            /* Hérite du fond global -> plus de bloc blanc */
+    background-color: rgba(75, 0, 130, 0.05);     /* Violet très léger */
 }
 
 /* Hover léger pour radios */
@@ -100,12 +99,6 @@ div[data-testid="stRadio"] input:checked + span {
     background-color: #FFD700 !important;
     color: #4B0082 !important;
     border-radius: 8px;
-}
-
-/* Chiffres 0-1-2-3 sous les radios en doré */
-div[data-testid="stRadio"] input[type="radio"] + span::after {
-    color: #FFD700 !important;
-    font-weight: bold;
 }
 
 /* Slider / radio texte labels (optionnel selon ton Streamlit) */
@@ -253,6 +246,7 @@ if st.button("Submit evaluation"):
     ]
     sheet.insert_row(data, 2)
     st.success("✅ Evaluation successfully submitted!")
+
 
 
 
