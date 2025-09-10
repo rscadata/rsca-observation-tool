@@ -23,8 +23,8 @@ st.markdown("""
 <style>
 /* --- Fond global et texte général --- */
 .stApp {
-    background-color: #F5F5F5;  /* blanc légèrement cassé */
-    color: #4B0082;              /* Texte par défaut violet */
+    background-color: #F5F5F5;
+    color: #4B0082;
 }
 
 /* Titres principaux */
@@ -44,7 +44,7 @@ h1, h2, h3 {
 .stTextArea textarea,
 .stSelectbox select,
 .stDateInput input {
-    color: #4B0082 !important;     /* Texte violet */
+    color: #4B0082 !important;
     background-color: #F0F0F0;
     border: 1px solid #F0F0F0;
     caret-color: #4B0082;
@@ -57,7 +57,7 @@ h1, h2, h3 {
     opacity: 0.7;
 }
 
-/* Labels (Observer name, Opponent, Category...) */
+/* Labels des champs */
 .stTextInput label,
 .stTextArea label,
 .stSelectbox label,
@@ -72,14 +72,21 @@ h1, h2, h3 {
 
 /* --- RADIOS --- */
 
-/* Supprimer le fond et padding des containers parents */
+/* Conteneur global transparent */
 div[data-testid="stVerticalBlock"] > div > div > div[data-testid="stRadio"] {
     background-color: transparent !important;
     padding: 0 !important;
     border: none !important;
 }
 
-/* Labels des options radios (exclut le titre) */
+/* Titre de la radio (ex: "Tactical Fluidity") */
+div[data-testid="stRadio"] > div:first-child {
+    color: #4B0082 !important;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Labels des options radios */
 div[data-testid="stRadio"] div[data-testid="stMarkdownContainer"] + div label {
     font-size: 20px !important;
     padding: 10px 25px !important;
@@ -89,7 +96,7 @@ div[data-testid="stRadio"] div[data-testid="stMarkdownContainer"] + div label {
     border-radius: 8px;
     cursor: pointer;
     transition: background 0.2s;
-    background-color: rgba(75, 0, 130, 0.12); /* violet légèrement plus foncé */
+    background-color: rgba(75, 0, 130, 0.12);
 }
 
 /* Hover léger pour options radios */
@@ -247,6 +254,7 @@ if st.button("Submit evaluation"):
     ]
     sheet.insert_row(data, 2)
     st.success("✅ Evaluation successfully submitted!")
+
 
 
 
