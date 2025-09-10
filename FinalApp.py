@@ -67,7 +67,7 @@ st.write("Welcome to the RSCA Academy Match Evaluation App!")
 # --- PRE MATCH INFORMATION ---
 st.header("1. Pre-match information")
 observer_name = st.text_input("Observer name")
-category = st.selectbox("Category", ["U10", "U11", "U12", "U13", "U14", "U15", "U16", "U17", "U18", "U19"])
+category = st.selectbox("Category", ["U8", "U9", "U10", "U11", "U12", "U13", "U14", "U15", "U16", "U18"])
 opponent = st.text_input("Opponent")
 match_date = st.date_input("Date", value=date.today())
 
@@ -126,4 +126,5 @@ if st.button("Submit evaluation"):
     ]
     sheet.insert_row(data, 2)
     st.success("✅ Evaluation successfully submitted!")
+
 
