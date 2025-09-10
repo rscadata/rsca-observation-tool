@@ -68,15 +68,23 @@ h1, h2, h3 {
     background-color: #FFD700;
 }
 
-/* --- Radios --- */
-/* Supprimer le fond et padding des containers autour des radios */
+/* --- RADIOS --- */
+
+/* Supprimer tout fond autour des radios */
+div[data-testid="stRadio"] {
+    background-color: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+}
+
+/* Supprimer le fond et padding des containers parents */
 div[data-testid="stVerticalBlock"] > div > div > div[data-testid="stRadio"] {
     background-color: transparent !important;
     padding: 0 !important;
     border: none !important;
 }
 
-/* Style des labels des radios */
+/* Labels des radios */
 div[data-testid="stRadio"] label {
     font-size: 20px !important;           /* Taille du texte */
     padding: 10px 25px !important;        /* Espace autour du texte */
@@ -84,7 +92,7 @@ div[data-testid="stRadio"] label {
     display: inline-block;
     color: #4B0082 !important;            /* Texte violet */
     border-radius: 8px;
-    background-color: white;              /* Fond non sélectionné */
+    background-color: white;              /* Option non sélectionnée */
     cursor: pointer;
     transition: background 0.2s;
 }
@@ -246,6 +254,7 @@ if st.button("Submit evaluation"):
     ]
     sheet.insert_row(data, 2)
     st.success("✅ Evaluation successfully submitted!")
+
 
 
 
