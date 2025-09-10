@@ -18,12 +18,13 @@ sheet = client.open_by_url(
 ).sheet1
 
 # --- PARAMÉTRAGE DE L'AFFICHAGE (CSS) ---
+
 st.markdown("""
 <style>
-/* Fond global blanc doux */
+/* --- Fond global et texte général --- */
 .stApp {
     background-color: #F5F5F5;  /* blanc légèrement cassé */
-    color: #4B0082;              /* Texte par défaut */
+    color: #4B0082;              /* Texte par défaut violet */
 }
 
 /* Titres principaux */
@@ -31,18 +32,21 @@ h1, h2, h3 {
     color: #4B0082;
 }
 
-/* Boutons */
+/* --- Boutons --- */
 .stButton>button {
     background-color: #F0F0F0;
     color: #4B0082;
     font-weight: bold;
 }
 
-/* Inputs, textareas, selectboxes : texte saisi */
+/* --- Inputs / TextAreas / Selectboxes --- */
 .stTextInput input,
 .stTextArea textarea,
 .stSelectbox select {
-    color: #4B0082 !important;
+    color: #4B0082 !important;     /* Texte saisi violet */
+    background-color: #F0F0F0;
+    border: 1px solid #F0F0F0;
+    caret-color: #4B0082;
 }
 
 /* Placeholder texte violet */
@@ -52,32 +56,35 @@ h1, h2, h3 {
     opacity: 0.7;
 }
 
-/* Labels widget (Observer name, Opponent, Category...) */
+/* Labels (Observer name, Opponent, Category...) */
 .stTextInput label,
 .stTextArea label,
 .stSelectbox label {
     color: #4B0082 !important;
 }
 
-/* Slider / radio texte labels */
-.css-1d391kg label, .css-1aumxhk {
-    color: #4B0082 !important;
-}
-
-/* Progress bars dorées */
+/* --- Progress bars dorées --- */
 .stProgress>div>div>div>div {
     background-color: #FFD700;
 }
 
-/* Agrandir et espacer tous les radios */
+/* --- Radios --- */
+/* Supprimer le fond et padding des containers autour des radios */
+div[data-testid="stVerticalBlock"] > div > div > div[data-testid="stRadio"] {
+    background-color: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+}
+
+/* Style des labels des radios */
 div[data-testid="stRadio"] label {
-    font-size: 20px !important;
-    padding: 10px 25px !important;
-    margin-right: 15px !important;
+    font-size: 20px !important;           /* Taille du texte */
+    padding: 10px 25px !important;        /* Espace autour du texte */
+    margin-right: 15px !important;        /* Espacement horizontal */
     display: inline-block;
-    color: #4B0082 !important;
+    color: #4B0082 !important;            /* Texte violet */
     border-radius: 8px;
-    background-color: white;
+    background-color: white;              /* Fond non sélectionné */
     cursor: pointer;
     transition: background 0.2s;
 }
@@ -92,6 +99,11 @@ div[data-testid="stRadio"] input:checked + span {
     background-color: #FFD700 !important;
     color: #4B0082 !important;
     border-radius: 8px;
+}
+
+/* Slider / radio texte labels (optionnel selon ton Streamlit) */
+.css-1d391kg label, .css-1aumxhk {
+    color: #4B0082 !important;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -234,6 +246,7 @@ if st.button("Submit evaluation"):
     ]
     sheet.insert_row(data, 2)
     st.success("✅ Evaluation successfully submitted!")
+
 
 
 
