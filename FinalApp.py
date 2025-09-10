@@ -19,6 +19,7 @@ sheet = client.open_by_url(
 
 # --- PARAMÉTRAGE DE L'AFFICHAGE (CSS) ---
 
+st.markdown("""
 <style>
 /* --- Fond global et texte général --- */
 .stApp {
@@ -246,6 +247,7 @@ if st.button("Submit evaluation"):
     ]
     sheet.insert_row(data, 2)
     st.success("✅ Evaluation successfully submitted!")
+
 
 
 
