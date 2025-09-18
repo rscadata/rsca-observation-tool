@@ -54,13 +54,8 @@ h1, h2, h3 {
 .stTextInput label,
 .stTextArea label,
 .stSelectbox label,
-.stDateInput label {                  /* <-- ajout de stDateInput ici */
+.stDateInput label {                
     color: #4B0082 !important;
-}
-
-/* --- Progress bars dorées --- */
-.stProgress>div>div>div>div {
-    background-color: #FFD700;
 }
 
 /* --- RADIOS --- */
@@ -112,12 +107,8 @@ st.write("Welcome to the RSCA Academy Game Evaluation tool!")
 st.header("1. Pre-match information")
 observer_name = st.text_input("Observer name")
 category = st.selectbox("Category", ["U23", "U18", "U16", "U15", "U14", "U13", "U12", "U11", "U10"])
-
 activity_type = st.selectbox("Activity type", ["Match", "Training"])
-#if activity_type == "Match":
 opponent = st.text_input("Opponent")
-#elif activity_type == "Training":
- #   opponent = None
 match_date = st.date_input("Date", value=date.today())
 
 # --- EVALUATION ---
@@ -130,16 +121,16 @@ st.write("3 = Applied consistently / strong impact")
 
 if activity_type == "Match":
     st.subheader("Build-up")
-    tactical_fluidity = st.radio("Tactical Fluidity", [0,1,2,3], index=0, horizontal=True)
-    progressive_possession = st.radio("Progressive Possession", [0,1,2,3], index=0, horizontal=True)
+    free_man = st.radio("Play the free man or commit", [0,1,2,3], index=0, horizontal=True)
+    create_overload = st.radio("Create overload", [0,1,2,3], index=0, horizontal=True)
     st.subheader("Progression")
-    off_ball_runs = st.radio("Off-Ball Runs", [0,1,2,3], index=0, horizontal=True)
-    player_scores = [tactical_fluidity, progressive_possession, off_ball_runs]
+    buildUp_finish = st.radio("From Build-up to finish", [0,1,2,3], index=0, horizontal=True)
+    offBall_breaking = st.radio("Off-ball runs ➡️ Breaking lines", [0,1,2,3], index=0, horizontal=True)
+    
 
 elif activity_type == "Training":
-    high_pressing = st.radio("High Pressing", [0,1,2,3], index=0, horizontal=True)
-    offensive_marking = st.radio("Offensive Marking", [0,1,2,3], index=0, horizontal=True)
-    player_scores = [high_pressing, offensive_marking]
+    ssg = st.radio("Small sided games (zone)", [0,1,2,3], index=0, horizontal=True)
+    decision_making = st.radio("Decision making", [0,1,2,3], index=0, horizontal=True)
 
 # --- GENERAL COMMENTS ---
 st.header("4. Comments")
@@ -147,24 +138,24 @@ general_comments = st.text_area("General Comments")
 
 # --- SUBMIT BUTTON ---
 if st.button("Submit evaluation"):
-    #data = [observer_name, category, opponent, str(match_date)]
 
     if activity_type == "Match":
         data = [observer_name, category, opponent, str(match_date)]
-        data.extend([tactical_fluidity, progressive_possession, off_ball_runs, general_comments])
+        data.extend([free_man, create_overload, buildUP_finish, offBall_breaking, general_comments])
         sheet_to_use = client.open_by_url(
             "https://docs.google.com/spreadsheets/d/11_32CeQAy9w0_Bqv8kZoZhw0Vrd8AQk90aL801XshMw/edit"
         ).worksheet("Match Data")
 
     elif activity_type == "Training":
         data = [observer_name, category, str(match_date)]
-        data.extend([high_pressing, offensive_marking, general_comments])
+        data.extend([ssg, decision_making, general_comments])
         sheet_to_use = client.open_by_url(
             "https://docs.google.com/spreadsheets/d/11_32CeQAy9w0_Bqv8kZoZhw0Vrd8AQk90aL801XshMw/edit"
         ).worksheet("Training Data")
 
     sheet_to_use.insert_row(data, 2)
     st.success(f"✅ {activity_type} evaluation successfully submitted!")
+
 
 
 
