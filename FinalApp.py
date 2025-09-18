@@ -37,7 +37,8 @@ st.write("Welcome to the RSCA Academy Game Evaluation tool!")
 st.header("1. Pre-match information")
 observer_name = st.text_input("Observer name")
 category = st.selectbox("Category", ["U23", "U18", "U16", "U15", "U14", "U13", "U12", "U11", "U10"])
-activity_type = st.selectbox("Activity type", ["Match", "Training"])
+#activity_type = st.selectbox("Activity type", ["Match", "Training"])
+activity_type = st.segmented_control("Choose activity type:", options=["Match", "Training"], default="Match")
 opponent = st.text_input("Opponent")
 match_date = st.date_input("Date", value=date.today())
 
@@ -62,24 +63,6 @@ elif activity_type == "Training":
     offensive_marking = st.radio("Offensive Marking", [0,1,2,3], index=0, horizontal=True)
     player_scores = [high_pressing, offensive_marking]
 
-# Calcul de la moyenne des joueurs
-average_players = sum(player_scores) / len(player_scores)
-average_players_20 = (average_players / 3) * 20
-st.subheader("Team evaluation average")
-st.write(f"Average score {average_players_20:.1f}/20")
-st.progress(int((average_players_20/20)*100))
-
-# --- COACH EVALUATION ---
-st.header("3. Coach evaluation")
-coach_attitude = st.radio("Coach Attitude", [0,1,2,3], index=0, horizontal=True)
-coach_impact = st.radio("Coach Impact On The Match", [0,1,2,3], index=0, horizontal=True)
-coach_scores = [coach_attitude, coach_impact]
-average_coach = sum(coach_scores) / len(coach_scores)
-average_coach_20 = (average_coach / 3) * 20
-st.subheader("Coach evaluation average")
-st.write(f"Average score {average_coach_20:.1f}/20")
-st.progress(int((average_coach_20/20)*100))
-
 # --- GENERAL COMMENTS ---
 st.header("4. Comments")
 general_comments = st.text_area("General Comments")
@@ -89,21 +72,20 @@ if st.button("Submit evaluation"):
     data = [observer_name, category, opponent, str(match_date)]
 
     if activity_type == "Match":
-        data.extend([tactical_fluidity, progressive_possession, off_ball_runs, round(average_players_20,1),
-                     coach_attitude, coach_impact, round(average_coach_20,1), general_comments])
+        data.extend([tactical_fluidity, progressive_possession, off_ball_runs, general_comments])
         sheet_to_use = client.open_by_url(
             "https://docs.google.com/spreadsheets/d/11_32CeQAy9w0_Bqv8kZoZhw0Vrd8AQk90aL801XshMw/edit"
         ).worksheet("Match Data")
 
     elif activity_type == "Training":
-        data.extend([high_pressing, offensive_marking, round(average_players_20,1),
-                     coach_attitude, coach_impact, round(average_coach_20,1), general_comments])
+        data.extend([high_pressing, offensive_marking, general_comments])
         sheet_to_use = client.open_by_url(
             "https://docs.google.com/spreadsheets/d/11_32CeQAy9w0_Bqv8kZoZhw0Vrd8AQk90aL801XshMw/edit"
         ).worksheet("Training Data")
 
     sheet_to_use.insert_row(data, 2)
     st.success(f"✅ {activity_type} evaluation successfully submitted!")
+
 
 
 
