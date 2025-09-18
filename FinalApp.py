@@ -43,11 +43,17 @@ match_date = st.date_input("Date", value=date.today())
 
 # --- EVALUATION ---
 st.header("2. Evaluation")
-st.write("0 = Not applied at all | 1 = Rarely | 2 = Inconsistently | 3 = Consistently")
+st.write("0 = Not applied at all")
+st.write("1 = Rarely applied / very weak")
+st.write("2 = Applied inconsistently / moderate level")
+st.write("3 = Applied consistently / strong impact")
+
 
 if activity_type == "Match":
+    st.subheader("Build-up")
     tactical_fluidity = st.radio("Tactical Fluidity", [0,1,2,3], index=0, horizontal=True)
     progressive_possession = st.radio("Progressive Possession", [0,1,2,3], index=0, horizontal=True)
+    st.subheader("Progression")
     off_ball_runs = st.radio("Off-Ball Runs", [0,1,2,3], index=0, horizontal=True)
     player_scores = [tactical_fluidity, progressive_possession, off_ball_runs]
 
@@ -98,6 +104,7 @@ if st.button("Submit evaluation"):
 
     sheet_to_use.insert_row(data, 2)
     st.success(f"✅ {activity_type} evaluation successfully submitted!")
+
 
 
 
