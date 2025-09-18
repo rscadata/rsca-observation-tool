@@ -114,10 +114,10 @@ observer_name = st.text_input("Observer name")
 category = st.selectbox("Category", ["U23", "U18", "U16", "U15", "U14", "U13", "U12", "U11", "U10"])
 
 activity_type = st.selectbox("Activity type", ["Match", "Training"])
-if activity_type == "Match":
-    opponent = st.text_input("Opponent")
-elif activity_type == "Training":
-    opponent = None
+#if activity_type == "Match":
+opponent = st.text_input("Opponent")
+#elif activity_type == "Training":
+ #   opponent = None
 match_date = st.date_input("Date", value=date.today())
 
 # --- EVALUATION ---
@@ -147,15 +147,17 @@ general_comments = st.text_area("General Comments")
 
 # --- SUBMIT BUTTON ---
 if st.button("Submit evaluation"):
-    data = [observer_name, category, opponent, str(match_date)]
+    #data = [observer_name, category, opponent, str(match_date)]
 
     if activity_type == "Match":
+        data = [observer_name, category, opponent, str(match_date)]
         data.extend([tactical_fluidity, progressive_possession, off_ball_runs, general_comments])
         sheet_to_use = client.open_by_url(
             "https://docs.google.com/spreadsheets/d/11_32CeQAy9w0_Bqv8kZoZhw0Vrd8AQk90aL801XshMw/edit"
         ).worksheet("Match Data")
 
     elif activity_type == "Training":
+        data = [observer_name, category, str(match_date)]
         data.extend([high_pressing, offensive_marking, general_comments])
         sheet_to_use = client.open_by_url(
             "https://docs.google.com/spreadsheets/d/11_32CeQAy9w0_Bqv8kZoZhw0Vrd8AQk90aL801XshMw/edit"
@@ -163,6 +165,7 @@ if st.button("Submit evaluation"):
 
     sheet_to_use.insert_row(data, 2)
     st.success(f"✅ {activity_type} evaluation successfully submitted!")
+
 
 
 
