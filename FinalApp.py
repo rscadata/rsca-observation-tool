@@ -112,8 +112,7 @@ st.write("Welcome to the RSCA Academy Game Evaluation tool!")
 st.header("1. Pre-match information")
 observer_name = st.text_input("Observer name")
 category = st.selectbox("Category", ["U23", "U18", "U16", "U15", "U14", "U13", "U12", "U11", "U10"])
-#activity_type = st.selectbox("Activity type", ["Match", "Training"])
-activity_type = st.segmented_control("Choose activity type:", options=["Match", "Training"], default="Match")
+activity_type = st.selectbox("Activity type", ["Match", "Training"])
 opponent = st.text_input("Opponent")
 match_date = st.date_input("Date", value=date.today())
 
@@ -160,6 +159,7 @@ if st.button("Submit evaluation"):
 
     sheet_to_use.insert_row(data, 2)
     st.success(f"✅ {activity_type} evaluation successfully submitted!")
+
 
 
 
