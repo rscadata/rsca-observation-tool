@@ -141,7 +141,7 @@ if st.button("Submit evaluation"):
 
     if activity_type == "Match":
         data = [observer_name, category, opponent, str(match_date)]
-        data.extend([free_man, create_overload, buildUP_finish, offBall_breaking, general_comments])
+        data.extend([free_man, create_overload, buildUp_finish, offBall_breaking, general_comments])
         sheet_to_use = client.open_by_url(
             "https://docs.google.com/spreadsheets/d/11_32CeQAy9w0_Bqv8kZoZhw0Vrd8AQk90aL801XshMw/edit"
         ).worksheet("Match Data")
@@ -155,6 +155,7 @@ if st.button("Submit evaluation"):
 
     sheet_to_use.insert_row(data, 2)
     st.success(f"✅ {activity_type} evaluation successfully submitted!")
+
 
 
 
