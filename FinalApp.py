@@ -14,34 +14,94 @@ client = gspread.authorize(creds)
 # --- AFFICHAGE (CSS) ---
 st.markdown(""" 
 <style>
-/* Ton CSS de base est inchangé */
-
-/* --- AJOUT POUR SEGMENTED CONTROL AVEC FOND CLAIR --- */
-div[data-baseweb="segmented-control"] {
-    background-color: #F0F0F0 !important;  /* Fond global gris clair */
-    border-radius: 12px !important;
-    padding: 4px !important;
+/* --- Fond global et texte général --- */
+.stApp {
+    background-color: #F5F5F5; /* blanc légèrement cassé */
+    color: #4B0082;             /* Texte par défaut violet */
 }
 
-div[data-baseweb="segmented-control"] button {
-    background-color: #F0F0F0 !important;  /* Chaque option non sélectionnée -> gris clair */
-    color: #4B0082 !important;             /* Texte violet */
-    font-weight: bold !important;
-    border-radius: 10px !important;
+/* Titres principaux */
+h1, h2, h3 {
+    color: #4B0082;
+}
+
+/* --- Boutons --- */
+.stButton>button {
+    background-color: #F0F0F0;
+    color: #4B0082;
+    font-weight: bold;
+}
+
+/* --- Inputs / TextAreas / Selectboxes / DateInput --- */
+.stTextInput input,
+.stTextArea textarea,
+.stSelectbox select,
+.stDateInput input {                   /* <-- ajout de stDateInput ici */
+    color: #4B0082 !important;        /* Texte saisi violet */
+    background-color: #F0F0F0;
+    border: 1px solid #F0F0F0;
+    caret-color: #4B0082;
+}
+
+/* Placeholder texte violet */
+.stTextInput input::placeholder,
+.stTextArea textarea::placeholder {
+    color: #4B0082 !important;
+    opacity: 0.7;
+}
+
+/* Labels (Observer name, Opponent, Category...) */
+.stTextInput label,
+.stTextArea label,
+.stSelectbox label,
+.stDateInput label {                  /* <-- ajout de stDateInput ici */
+    color: #4B0082 !important;
+}
+
+/* --- Progress bars dorées --- */
+.stProgress>div>div>div>div {
+    background-color: #FFD700;
+}
+
+/* --- RADIOS --- */
+div[data-testid="stVerticalBlock"] > div > div > div[data-testid="stRadio"] {
+    background-color: transparent !important;
+    padding: 0 !important;
     border: none !important;
-    transition: all 0.2s ease-in-out;
 }
 
-div[data-baseweb="segmented-control"] button:hover {
-    background-color: rgba(75, 0, 130, 0.12) !important; /* Léger violet au survol */
+/* Labels des radios */
+div[data-testid="stRadio"] label {
+    font-size: 20px !important;
+    padding: 10px 25px !important;
+    margin-right: 15px !important;
+    display: inline-block;
+    color: #4B0082 !important; 
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+    background-color: rgba(75, 0, 130, 0.12);
 }
 
-div[data-baseweb="segmented-control"] button[aria-checked="true"] {
-    background-color: #FFD700 !important;  /* Option sélectionnée -> fond doré */
-    color: #4B0082 !important;             /* Texte violet */
+/* Hover léger pour radios */
+div[data-testid="stRadio"] label:hover {
+    background-color: rgba(75, 0, 130, 0.18);
+}
+
+/* Fond doré pour option radio sélectionnée */
+div[data-testid="stRadio"] input:checked + span {
+    background-color: #FFD700 !important;
+    color: #4B0082 !important;
+    border-radius: 8px;
+}
+
+/* Slider / radio texte labels (optionnel selon ton Streamlit) */
+.css-1d391kg label, .css-1aumxhk {
+    color: #4B0082 !important;
 }
 </style>
 """, unsafe_allow_html=True)
+
 
 
 # --- TITRE DE LA PAGE ---  
@@ -100,6 +160,7 @@ if st.button("Submit evaluation"):
 
     sheet_to_use.insert_row(data, 2)
     st.success(f"✅ {activity_type} evaluation successfully submitted!")
+
 
 
 
