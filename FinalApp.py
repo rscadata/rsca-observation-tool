@@ -17,17 +17,48 @@ st.markdown("""
 .stApp {background-color: #F5F5F5; color: #4B0082;}
 h1, h2, h3 {color: #4B0082;}
 .stButton>button {background-color: #F0F0F0; color: #4B0082; font-weight: bold;}
-.stTextInput input, .stTextArea textarea, .stSelectbox select, .stDateInput input {color: #4B0082 !important; background-color: #F0F0F0; border: 1px solid #F0F0F0; caret-color: #4B0082;}
-.stTextInput input::placeholder, .stTextArea textarea::placeholder {color: #4B0082 !important; opacity: 0.7;}
+.stTextInput input, .stTextArea textarea, .stSelectbox select, .stDateInput input {
+    color: #4B0082 !important; background-color: #F0F0F0; border: 1px solid #F0F0F0; caret-color: #4B0082;
+}
+.stTextInput input::placeholder, .stTextArea textarea::placeholder {
+    color: #4B0082 !important; opacity: 0.7;
+}
 .stTextInput label, .stTextArea label, .stSelectbox label, .stDateInput label {color: #4B0082 !important;}
 .stProgress>div>div>div>div {background-color: #FFD700;}
-div[data-testid="stVerticalBlock"] > div > div > div[data-testid="stRadio"] {background-color: transparent !important; padding: 0 !important; border: none !important;}
-div[data-testid="stRadio"] label {font-size: 20px !important; padding: 10px 25px !important; margin-right: 15px !important; display: inline-block; color: #4B0082 !important; border-radius: 8px; cursor: pointer; transition: background 0.2s; background-color: rgba(75, 0, 130, 0.12);}
+div[data-testid="stVerticalBlock"] > div > div > div[data-testid="stRadio"] {
+    background-color: transparent !important; padding: 0 !important; border: none !important;
+}
+div[data-testid="stRadio"] label {
+    font-size: 20px !important; padding: 10px 25px !important; margin-right: 15px !important;
+    display: inline-block; color: #4B0082 !important; border-radius: 8px; cursor: pointer;
+    transition: background 0.2s; background-color: rgba(75, 0, 130, 0.12);
+}
 div[data-testid="stRadio"] label:hover {background-color: rgba(75, 0, 130, 0.18);}
-div[data-testid="stRadio"] input:checked + span {background-color: #FFD700 !important; color: #4B0082 !important; border-radius: 8px;}
+div[data-testid="stRadio"] input:checked + span {
+    background-color: #FFD700 !important; color: #4B0082 !important; border-radius: 8px;
+}
 .css-1d391kg label, .css-1aumxhk {color: #4B0082 !important;}
+
+/* --- AJOUT POUR SEGMENTED CONTROL --- */
+div[data-baseweb="segmented-control"] {
+    background-color: #F0F0F0 !important;
+    border-radius: 12px !important;
+    padding: 4px !important;
+}
+div[data-baseweb="segmented-control"] button {
+    background-color: transparent !important;
+    color: #4B0082 !important;
+    font-weight: bold !important;
+    border-radius: 10px !important;
+    transition: all 0.2s ease-in-out;
+}
+div[data-baseweb="segmented-control"] button[aria-checked="true"] {
+    background-color: #FFD700 !important;
+    color: #4B0082 !important;
+}
 </style>
 """, unsafe_allow_html=True)
+
 
 # --- TITRE DE LA PAGE ---  
 st.title("METHODOLOGY GAME OBSERVATION")
@@ -85,6 +116,7 @@ if st.button("Submit evaluation"):
 
     sheet_to_use.insert_row(data, 2)
     st.success(f"✅ {activity_type} evaluation successfully submitted!")
+
 
 
 
