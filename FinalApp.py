@@ -149,7 +149,7 @@ if activity_type == "Match":
     play_deep = st.radio("Run & play deep", [0,1,2,3], index=0, horizontal=True)
     
     
-    elif activity_type == "Training":
+elif activity_type == "Training":
     ssg = st.radio("Small sided games (zone)", [0,1,2,3], index=0, horizontal=True)
     decision_making = st.radio("Decision making", [0,1,2,3], index=0, horizontal=True)
     control_chaos = st.radio("From control to chaos", [0,1,2,3], index=0, horizontal=True)
@@ -182,6 +182,7 @@ if st.button("Submit evaluation"):
 
     sheet_to_use.insert_row(data, 2)
     st.success(f"✅ {activity_type} evaluation successfully submitted!")
+
 
 
 
