@@ -175,13 +175,14 @@ if st.button("Submit evaluation"):
 
     elif activity_type == "Training":
         data = [observer_name, category, str(match_date)]
-        data.extend([ssg, decision_making, general_comments])
+        data.extend([ssg, decision_making, control_chaos, counterpress_transitions, competition, connection,  general_comments])
         sheet_to_use = client.open_by_url(
             "https://docs.google.com/spreadsheets/d/11_32CeQAy9w0_Bqv8kZoZhw0Vrd8AQk90aL801XshMw/edit"
         ).worksheet("Training Data")
 
     sheet_to_use.insert_row(data, 2)
     st.success(f"✅ {activity_type} evaluation successfully submitted!")
+
 
 
 
