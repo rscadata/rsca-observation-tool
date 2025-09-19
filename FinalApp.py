@@ -129,11 +129,34 @@ if activity_type == "Match":
     st.subheader("Progression")
     buildUp_finish = st.radio("From Build-up to finish", [0,1,2,3], index=0, horizontal=True)
     offBall_breaking = st.radio("Off-ball runs ➡️ Breaking lines", [0,1,2,3], index=0, horizontal=True)
+    st.subheader("Finishing")
+    right_decision = st.radio("Final action = right decision", [0,1,2,3], index=0, horizontal=True)
+    occupation_finishing = st.radio("Box occupation & finishing", [0,1,2,3], index=0, horizontal=True)
+    st.subheader("Counter Press")
+    recovery = st.radio("< 5sec recovery", [0,1,2,3], index=0, horizontal=True)
+    collective_movement = st.radio("Collective movement", [0,1,2,3], index=0, horizontal=True)
+    st.subheader("Press")
+    press_high = st.radio("Press high in zone 3", [0,1,2,3], index=0, horizontal=True)
+    hunt = st.radio("Hunt Collectively", [0,1,2,3], index=0, horizontal=True)
+    st.subheader("Defend compact")
+    compact_block = st.radio("Compact & Connected block", [0,1,2,3], index=0, horizontal=True)
+    collective_shifting = st.radio("Collective shifting (drop-slide-push)", [0,1,2,3], index=0, horizontal=True)
+    st.subheader("Defend Goal")
+    close_centre = st.radio("Close the centre", [0,1,2,3], index=0, horizontal=True)
+    defend_crosses = st.radio("Block or defend crosses", [0,1,2,3], index=0, horizontal=True)
+    st.subheader("Fast Transitions")
+    decisive_simple = st.radio("Decisive & simple", [0,1,2,3], index=0, horizontal=True)
+    play_deep = st.radio("Run & play deep", [0,1,2,3], index=0, horizontal=True)
     
-
-elif activity_type == "Training":
+    
+    elif activity_type == "Training":
     ssg = st.radio("Small sided games (zone)", [0,1,2,3], index=0, horizontal=True)
     decision_making = st.radio("Decision making", [0,1,2,3], index=0, horizontal=True)
+    control_chaos = st.radio("From control to chaos", [0,1,2,3], index=0, horizontal=True)
+    counterpress_transitions = st.radio("Counterpress / Fast transitions", [0,1,2,3], index=0, horizontal=True)
+    competition = st.radio("Competition", [0,1,2,3], index=0, horizontal=True)
+    connection = st.radio("Individual connection", [0,1,2,3], index=0, horizontal=True)
+    
 
 # --- GENERAL COMMENTS ---
 st.header("4. Comments")
@@ -144,7 +167,8 @@ if st.button("Submit evaluation"):
 
     if activity_type == "Match":
         data = [observer_name, category, opponent, str(match_date)]
-        data.extend([free_man, create_overload, buildUp_finish, offBall_breaking, general_comments])
+        data.extend([free_man, create_overload, buildUp_finish, offBall_breaking, right_decision, occupation_finishing, recovery, collective_movement, press_high, hunt,
+                     compact_block, collective_shifting, close_centre, defend_crosses, decisive_simple, play_deep, general_comments])
         sheet_to_use = client.open_by_url(
             "https://docs.google.com/spreadsheets/d/11_32CeQAy9w0_Bqv8kZoZhw0Vrd8AQk90aL801XshMw/edit"
         ).worksheet("Match Data")
@@ -158,6 +182,7 @@ if st.button("Submit evaluation"):
 
     sheet_to_use.insert_row(data, 2)
     st.success(f"✅ {activity_type} evaluation successfully submitted!")
+
 
 
 
