@@ -133,7 +133,7 @@ if activity_type == "Match":
     right_decision = st.radio("Final action = right decision", [0,1,2,3], index=0, horizontal=True)
     occupation_finishing = st.radio("Box occupation & finishing", [0,1,2,3], index=0, horizontal=True)
     st.subheader("Counter Press")
-    recovery = st.radio("< 5sec recovery", [0,1,2,3], index=0, horizontal=True)
+    recovery = st.radio("< 5 sec recovery", [0,1,2,3], index=0, horizontal=True)
     collective_movement = st.radio("Collective movement", [0,1,2,3], index=0, horizontal=True)
     st.subheader("Press")
     press_high = st.radio("Press high in zone 3", [0,1,2,3], index=0, horizontal=True)
@@ -182,6 +182,7 @@ if st.button("Submit evaluation"):
 
     sheet_to_use.insert_row(data, 2)
     st.success(f"✅ {activity_type} evaluation successfully submitted!")
+
 
 
 
