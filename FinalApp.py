@@ -36,8 +36,8 @@ h1, h2, h3 {
 .stTextInput input,
 .stTextArea textarea,
 .stSelectbox select,
-.stDateInput input {                   /* <-- ajout de stDateInput ici */
-    color: #4B0082 !important;        /* Texte saisi violet */
+.stDateInput input {                  
+    color: #4B0082 !important;       
     background-color: #F0F0F0;
     border: 1px solid #F0F0F0;
     caret-color: #4B0082;
@@ -90,7 +90,7 @@ div[data-testid="stRadio"] input:checked + span {
     border-radius: 8px;
 }
 
-/* Slider / radio texte labels (optionnel selon ton Streamlit) */
+/* Slider / radio texte labels */
 .css-1d391kg label, .css-1aumxhk {
     color: #4B0082 !important;
 }
@@ -166,7 +166,7 @@ general_comments = st.text_area("General Comments")
 if st.button("Submit evaluation"):
 
     if activity_type == "Match":
-        data = [observer_name, category, opponent, str(match_date)]
+        data = [observer_name, category, opponent, str(match_date), ""]
         data.extend([free_man, create_overload, buildUp_finish, offBall_breaking, right_decision, occupation_finishing, recovery, collective_movement, press_high, hunt,
                      compact_block, collective_shifting, close_centre, defend_crosses, decisive_simple, play_deep, general_comments])
         sheet_to_use = client.open_by_url(
@@ -182,6 +182,7 @@ if st.button("Submit evaluation"):
 
     sheet_to_use.insert_row(data, 2)
     st.success(f"✅ {activity_type} evaluation successfully submitted!")
+
 
 
 
